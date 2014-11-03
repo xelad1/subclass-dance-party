@@ -1,12 +1,11 @@
-var makeBlinkyDancer = function(top, left, timeBetweenSteps){
-  console.log(arguments);
+var makeVillainDancer = function(top, left, timeBetweenSteps){
   makeDancer.apply(this, arguments);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
 };
-makeBlinkyDancer.prototype = Object.create(makeDancer.prototype);
+makeVillainDancer.prototype = Object.create(makeDancer.prototype);
 
-makeBlinkyDancer.prototype.step = (function(step) {
+makeVillainDancer.prototype.step = (function(step) {
 
   return function(){
     // call the old version of step at the beginning of any call to this new version of step
@@ -19,11 +18,18 @@ makeBlinkyDancer.prototype.step = (function(step) {
     }
     // console.log(this.$node)
     // console.log(this.$node.toggle);
-    this.$node.toggle();
+    this.doPower();
   };
 
-})(makeBlinkyDancer.prototype.step);
+})(makeVillainDancer.prototype.step);
 
-makeBlinkyDancer.prototype.constructor = makeBlinkyDancer;
+makeDancer.prototype.doPower = function() {
+
+  //shoot some lasers
+
+
+};
+
+makeVillainDancer.prototype.constructor = makeVillainDancer;
 
 
