@@ -2,9 +2,9 @@ var makeVillainDancer = function(top, left, timeBetweenSteps){
   makeDancer.apply(this, arguments);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.$node.prepend($('<img src="./images/joker3.gif" />').height(150).width(150));
+  this.$node.prepend($('<img src="./images/joker3.gif" />').height(100).width(100));
   this.$node.mouseover(this.doPower.bind(this));
-  this.velocity = 1;
+  // this.velocity = 1;
   villains.push(this);
 };
 makeVillainDancer.prototype = Object.create(makeDancer.prototype);
