@@ -24,6 +24,16 @@ makeHeroDancer.prototype.step = (function(step) {
         element.remove();
       }
     });
+    _.each(villains, function(villain){
+      var distance = Math.sqrt(Math.pow(villain.top - that.top, 2) + Math.pow(villain.left - that.left, 2));
+      if(distance < 100){
+        var topDelta = that.top + 5*(that.top-villain.top);
+        var leftDelta = that.left + 5*(that.left - villain.left)
+        that.top = topDelta;
+        that.left = leftDelta;
+        that.setPosition(topDelta, leftDelta);
+      }
+    });
   };
 
 })(makeHeroDancer.prototype.step);

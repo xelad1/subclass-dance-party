@@ -10,3 +10,11 @@ var lineUp = function(){
   });
 
 };
+
+var revertLineUp = function(){
+  _.each(dancers, function(dancer, ind){
+    dancer.velocity = 100;
+    dancer.top = $("#floor").height() * Math.random();
+    dancer.left = $("#floor").width() * Math.random();
+  });
+}

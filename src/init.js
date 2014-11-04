@@ -1,8 +1,16 @@
 $(document).ready(function(){
   window.dancers = [];
+  window.villains = [];
+  window.approxFactor = 100;
   var linedUp = false;
   $('.lineupButton').on('click', function(e){
-    lineUp();
+    if(!linedUp) {
+        lineUp();
+        linedUp = true;
+    } else {
+        revertLineUp();
+        linedUp = false;
+    }
   });
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -29,7 +37,7 @@ $(document).ready(function(){
     var width = $("#floor").width() * Math.random();
     var timeInterval = Math.random() * 1000 + 500;
     console.log(height, width, timeInterval);
-    var dancer = new dancerMakerFunction(height, width, timeInterval)
+    var dancer = new dancerMakerFunction(height, width, timeInterval);
     $('#floor').append(dancer.$node);
     dancers.push(dancer);
   });

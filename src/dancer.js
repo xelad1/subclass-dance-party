@@ -9,15 +9,41 @@ var makeDancer = function(top, left, timeBetweenSteps){
   this.maxofX = $('#floor').width();
   this.maxofY = $('#floor').height();
   this.velocity = 100;
+  this.prevApprox = undefined;
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.step();
 };
 
 makeDancer.prototype.step = function(){
+
+
     // the basic dancer doesn't do anything interesting at all on each step,
     // it just schedules the next step
     this.move();
+    // if(this.prevApprox){
+    //   var approxArr = window.approxPos[this.prevApprox[0]][this.prevApprox[1]];
+    //   // approxArr.remove(this)
+    //   var that = this;
+    //   _.remove(approxArr, function(el){
+    //     return el === that;
+    //   });
+    //   // console.log(approxArr)
+    //   // console.log(this.prevApprox)
+    // }
+    // var approxY = Math.floor(this.top/window.approxFactor);
+    // var approxX = Math.floor(this.left/window.approxFactor);
+    // this.prevApprox = [approxX, approxY];
+    // if(!window.approxPos[approxX]){
+    //   window.approxPos[approxX] = [];
+    // }
+    // if(!window.approxPos[approxX][approxY]){
+    //   window.approxPos[approxX][approxY] = [];
+    // }
+    // window.approxPos[approxX][approxY].push(this);
+    // if(window.approxPos[approxX][approxY].length > 1){
+      // console.log(window.approxPos[approxX][approxY])
+    // }
     setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
