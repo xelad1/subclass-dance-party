@@ -1,4 +1,5 @@
 var makeHeroDancer = function(top, left, timeBetweenSteps){
+  this.projectiles = [];
   makeDancer.apply(this, arguments);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
@@ -16,6 +17,12 @@ makeHeroDancer.prototype.step = (function(step) {
     if(typeof this.$node === 'undefined'){
       // debugger;
     }
+    var that = this;
+    _.each(this.projectiles, function(element) {
+      if(!that.inBounds(element.left, element.top)) {
+        element.remove();
+      }
+    });
     // console.log(this.$node)
     // console.log(this.$node.toggle);
     this.doPower();
@@ -29,6 +36,8 @@ makeHeroDancer.prototype.doPower = function() {
 
 
 };
+
+
 
 makeHeroDancer.prototype.constructor = makeHeroDancer;
 

@@ -1,14 +1,16 @@
 
-var makeProjectile = function(top, left, velocity, imgURL){
-  this.$node = $('<img src="' + imgUrl + '"/>');
+var makeProjectile = function(top, left, velocityX, velocityY, imgURL){
+  this.$node = $('<img src="' + imgURL + '"/>');
 
-  this.step();
   this.top = top;
   this.left = left;
   this.setPosition(top, left);
   this.maxofX = $('#floor').width();
   this.maxofY = $('#floor').height();
-  this.velocity = 50;
+  this.velocityX = velocityX;
+  this.velocityY = velocityY;
+  $('#floor').prepend(this.$node);
+  this.step();
 };
 
 makeProjectile.prototype.step = function(){
@@ -26,13 +28,13 @@ makeProjectile.prototype.setPosition = function(top, left){
 };
 
 makeProjectile.prototype.move = function() {
-  var randX = Math.floor((Math.random() * (this.velocity * 2)) - this.velocity);
-  var randY = Math.floor((Math.random() * (this.velocity * 2)) - this.velocity);
-  this.top  += randY;
-  this.left += randX;
-  this.top = Math.abs(this.top % this.maxofY);
-  this.left = Math.abs(this.left % this.maxofX);
+  this.top  += this.velocityY;
+  this.left += this.velocityX;
   this.setPosition(this.top, this.left);
+};
 
-}
+makeProjectile.prototype.remove = function() {
+  this.$node.remove();
+};
+
 

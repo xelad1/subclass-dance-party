@@ -3,7 +3,6 @@ var makeDancer = function(top, left, timeBetweenSteps){
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
-  this.step();
   this.top = top;
   this.left = left;
   this.setPosition(top, left);
@@ -12,6 +11,7 @@ var makeDancer = function(top, left, timeBetweenSteps){
   this.velocity = 50;
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
+  this.step();
 };
 
 makeDancer.prototype.step = function(){
@@ -42,5 +42,13 @@ makeDancer.prototype.move = function() {
   this.left = Math.abs(this.left % this.maxofX);
   this.setPosition(this.top, this.left);
 
-}
+};
+
+makeDancer.prototype.inBounds = function(x, y) {
+  if(x < 0 && x > this.maxofX && y < 0 && y > this.maxofY) {
+    return true;
+  } else {
+    return false;
+  }
+};
 

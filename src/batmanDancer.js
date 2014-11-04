@@ -1,8 +1,8 @@
 var makeBatmanDancer = function(top, left, timeBetweenSteps){
   makeHeroDancer.apply(this, arguments);
+  this.$node.prepend($('<img src="./images/batman.gif" />').height(150).width(150));
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.$node.prepend($('<img src="./images/batman.gif" />').height(150).width(150));
 };
 makeBatmanDancer.prototype = Object.create(makeHeroDancer.prototype);
 
@@ -25,6 +25,13 @@ makeBatmanDancer.prototype.step = (function(step) {
 })(makeBatmanDancer.prototype.step);
 
 makeBatmanDancer.prototype.doPower = function() {
+  var velocity = 50;
+  var randDegree = Math.floor(Math.random()* 360);
+  var xVelocity = velocity * Math.cos(randDegree);
+  var yVelocity = velocity * Math.sin(randDegree);
+
+  console.log(this)
+  this.projectiles.push(new makeProjectile(this.top, this.left, xVelocity, yVelocity, './images/bat.gif'));
 
   //shoot some lasers
 
