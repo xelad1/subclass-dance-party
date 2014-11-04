@@ -24,10 +24,11 @@ $(document).ready(function(){
     // make a dancer with a random position
     var height = $("#floor").height() * Math.random();
     var width = $("#floor").width() * Math.random();
-    var timeInterval = Math.random() * 1000 + 200;
+    var timeInterval = Math.random() * 1000 + 500;
     console.log(height, width, timeInterval);
     var dancer = new dancerMakerFunction(height, width, timeInterval)
     $('#floor').append(dancer.$node);
+    dancers.push(dancer);
   });
 });
 

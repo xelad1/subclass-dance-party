@@ -1,7 +1,6 @@
 
-var makeProjectile = function(top, left, velocityX, velocityY, imgURL){
-  this.$node = $('<img src="' + imgURL + '"/>');
-
+var makeProjectile = function(top, left, velocityX, velocityY, imgURL, sizeX, sizeY){
+  this.$node = $('<img class="projectile" src="' + imgURL + '"/>');
   this.top = top;
   this.left = left;
   this.setPosition(top, left);
@@ -9,6 +8,12 @@ var makeProjectile = function(top, left, velocityX, velocityY, imgURL){
   this.maxofY = $('#floor').height();
   this.velocityX = velocityX;
   this.velocityY = velocityY;
+  if(sizeX){
+    this.$node.width(sizeX);
+  }
+  if(sizeY){
+    this.$node.width(sizeY);
+  }
   $('#floor').prepend(this.$node);
   this.step();
 };

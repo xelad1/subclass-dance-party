@@ -19,13 +19,11 @@ makeHeroDancer.prototype.step = (function(step) {
     }
     var that = this;
     _.each(this.projectiles, function(element) {
+      // console.log(element.left, element.top, !that.inBounds(element.left, element.top))
       if(!that.inBounds(element.left, element.top)) {
         element.remove();
       }
     });
-    // console.log(this.$node)
-    // console.log(this.$node.toggle);
-    this.doPower();
   };
 
 })(makeHeroDancer.prototype.step);

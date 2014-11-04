@@ -8,7 +8,7 @@ var makeDancer = function(top, left, timeBetweenSteps){
   this.setPosition(top, left);
   this.maxofX = $('#floor').width();
   this.maxofY = $('#floor').height();
-  this.velocity = 50;
+  this.velocity = 100;
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.step();
@@ -30,7 +30,7 @@ makeDancer.prototype.setPosition = function(top, left){
       top: top,
       left: left
     };
-    this.$node.css(styleSettings);
+    this.$node.animate(styleSettings, 500);
 };
 
 makeDancer.prototype.move = function() {
@@ -46,6 +46,7 @@ makeDancer.prototype.move = function() {
 
 makeDancer.prototype.inBounds = function(x, y) {
   if(x < 0 && x > this.maxofX && y < 0 && y > this.maxofY) {
+    console.log(x, this.maxofX, y, this.maxofY);
     return true;
   } else {
     return false;
