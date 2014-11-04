@@ -22,12 +22,12 @@ $(document).ready(function(){
     console.log(dancerMakerFunctionName)
     console.log(dancerMakerFunction)
     // make a dancer with a random position
-    var height = $("body").height() * Math.random();
-    var width = $("body").width() * Math.random();
-    var timeInterval = Math.random() * 1000;
+    var height = $("#floor").height() * Math.random();
+    var width = $("#floor").width() * Math.random();
+    var timeInterval = Math.random() * 1000 + 200;
     console.log(height, width, timeInterval);
     var dancer = new dancerMakerFunction(height, width, timeInterval)
-    $('body').append(dancer.$node);
+    $('#floor').append(dancer.$node);
   });
 });
 
