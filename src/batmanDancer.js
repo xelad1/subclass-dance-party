@@ -1,7 +1,13 @@
 var makeBatmanDancer = function(top, left, timeBetweenSteps){
   makeHeroDancer.apply(this, arguments);
   this.$node.prepend($('<img src="./images/batman.gif" />').height(150).width(150));
-  this.$node.mouseover(this.doPower.bind(this));
+  var that;
+  this.sound = $('#nanana');
+  this.$node.mouseover(function(){
+      that.doPower.call(that);
+      that.sound.play();
+    }
+  );
 };
 makeBatmanDancer.prototype = Object.create(makeHeroDancer.prototype);
 
